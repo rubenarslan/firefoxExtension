@@ -1,0 +1,14 @@
+{
+    "description": "Display PubPeer comments on the web", 
+    "license": "MPL 2.0", 
+    "title": "PubPeer", 
+    "author": "PubPeer.com", 
+    "name": "pubpeer", 
+    "version": "0.1.3", 
+    "id": "jid1-rU2mNakSg7IiSQ", 
+    "permissions": {
+        "cross-domain-content": [
+            "http://api.pubpeer.com/"
+        ]
+    }
+}
