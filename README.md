@@ -1,2 +1,2 @@
 # firefoxExtension
-Firefox Broswer Extension
+Firefox Browser Extension

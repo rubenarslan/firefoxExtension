@@ -59,6 +59,16 @@ if(window.location.hostname != "pubpeer.com" && pageDOIs.length > 0){
 			} else if(total_comments > 1){
 				hrefText = total_comments + " comments on PubPeer";
 			}
+			let uniqueCommenters = new Set();
+			if(total_comments > 0) {
+				for(let j = 0; j < total_comments; j++) {
+                        if(json.feedbacks[i].comments[j] && json.feedbacks[i].comments[j].user) {
+							uniqueCommenters.add(json.feedbacks[i].comments[j].user);
+                        }
+				}
+				hrefText += " (by: " + [...uniqueCommenters].join(", ") + ")";
+			}
+
 			let linkToComments = json.feedbacks[i].url + "?utm_source=FireFox&utm_medium=BrowserExtension&utm_campaign=FireFox";
 			let tagElements = ":contains("+matchedPageDOIs[i]+")";
 			let unsortedDoiElements = $(tagElements);
@@ -85,8 +95,8 @@ if(window.location.hostname != "pubpeer.com" && pageDOIs.length > 0){
 				}
 				if(!anyAlreadyAdded){
 					$(aDoiElement[k].element).append(
-						$("<p>", { class: "pp_comm" })
-							.append($("<a>", { href: linkToComments, style: "color: rgb(255,255,255); text-decoration: none; font-weight: bold; margin-left: 1em", text: hrefText}))
+						$("<p>", { class: "pp_comm" , style: "margin-left: 1em;" })
+							.append($("<a>", { href: linkToComments, style: "color: rgb(255,255,255); text-decoration: none; font-weight: bold; ", text: hrefText}))
 							.css("background", "#ff9e29")
 					);
 				}
